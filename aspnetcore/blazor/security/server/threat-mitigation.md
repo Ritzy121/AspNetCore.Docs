@@ -5,7 +5,7 @@ description: Learn how to mitigate security threats to Blazor Server apps.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2021
+ms.date: 11/08/2022
 uid: blazor/security/server/threat-mitigation
 ---
 # Threat mitigation guidance for ASP.NET Core Blazor Server
@@ -39,7 +39,7 @@ Resource exhaustion can occur when a client interacts with the server and causes
 
 Denial of service (DoS) attacks usually seek to exhaust an app or server's resources. However, resource exhaustion isn't necessarily the result of an attack on the system. For example, finite resources can be exhausted due to high user demand. DoS is covered further in the [Denial of service (DoS) attacks](#denial-of-service-dos-attacks) section.
 
-Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:performance/performance-best-practices>.
+Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:fundamentals/best-practices>.
 
 ### CPU
 
@@ -365,7 +365,7 @@ When a Blazor Server app session starts, the server performs basic validation of
 
 When a user selects a link on the client, the URL for the link is sent to the server, which determines what action to take. For example, the app may perform a client-side navigation or indicate to the browser to go to the new location.
 
-Components can also trigger navigation requests programatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
+Components can also trigger navigation requests programmatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
 
 Components must:
 
@@ -430,7 +430,7 @@ Resource exhaustion can occur when a client interacts with the server and causes
 
 Denial of service (DoS) attacks usually seek to exhaust an app or server's resources. However, resource exhaustion isn't necessarily the result of an attack on the system. For example, finite resources can be exhausted due to high user demand. DoS is covered further in the [Denial of service (DoS) attacks](#denial-of-service-dos-attacks) section.
 
-Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:performance/performance-best-practices>.
+Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:fundamentals/best-practices>.
 
 ### CPU
 
@@ -756,7 +756,7 @@ When a Blazor Server app session starts, the server performs basic validation of
 
 When a user selects a link on the client, the URL for the link is sent to the server, which determines what action to take. For example, the app may perform a client-side navigation or indicate to the browser to go to the new location.
 
-Components can also trigger navigation requests programatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
+Components can also trigger navigation requests programmatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
 
 Components must:
 
@@ -821,7 +821,7 @@ Resource exhaustion can occur when a client interacts with the server and causes
 
 Denial of service (DoS) attacks usually seek to exhaust an app or server's resources. However, resource exhaustion isn't necessarily the result of an attack on the system. For example, finite resources can be exhausted due to high user demand. DoS is covered further in the [Denial of service (DoS) attacks](#denial-of-service-dos-attacks) section.
 
-Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:performance/performance-best-practices>.
+Resources external to the Blazor framework, such as databases and file handles (used to read and write files), may also experience resource exhaustion. For more information, see <xref:fundamentals/best-practices>.
 
 ### CPU
 
@@ -1147,7 +1147,7 @@ When a Blazor Server app session starts, the server performs basic validation of
 
 When a user selects a link on the client, the URL for the link is sent to the server, which determines what action to take. For example, the app may perform a client-side navigation or indicate to the browser to go to the new location.
 
-Components can also trigger navigation requests programatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
+Components can also trigger navigation requests programmatically through the use of <xref:Microsoft.AspNetCore.Components.NavigationManager>. In such scenarios, the app might perform a client-side navigation or indicate to the browser to go to the new location.
 
 Components must:
 

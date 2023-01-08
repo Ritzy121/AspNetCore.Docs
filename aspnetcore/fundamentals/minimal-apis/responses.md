@@ -1,10 +1,10 @@
 ---
-title: Create responses in Minimal API apps
+title: Create responses in Minimal API applications
 author: brunolins16
 description: Learn how to create responses for minimal APIs in ASP.NET Core.
 ms.author: brolivei
 monikerRange: '>= aspnetcore-7.0'
-ms.date: 10/11/2022
+ms.date: 11/07/2022
 uid: fundamentals/minimal-apis/responses
 ---
 
@@ -90,7 +90,7 @@ Use [`Results<TResult1, TResultN>`](/dotnet/api/microsoft.aspnetcore.http.httpre
 
 This alternative is better than returning `IResult` because the generic union types automatically retain the endpoint metadata. And since the `Results<TResult1, TResultN>` union types implement implicit cast operators, the compiler can automatically convert the types specified in the generic arguments to an instance of the union type. 
 
-This has the added benefit of providing compile-time checking that a route handler actually only returns the results that it declares it does. Attempting to return a type that isn’t declared as one of the generic arguments to `Results<>` results in a compilation error.
+This has the added benefit of providing compile-time checking that a route handler actually only returns the results that it declares it does. Attempting to return a type that isn't declared as one of the generic arguments to `Results<>` results in a compilation error.
 
 Consider the following endpoint, for which a `400 BadRequest` status code is returned when the `orderId` is greater than `999`. Otherwise, it produces a `200 OK` with the expected content.
 
@@ -164,6 +164,25 @@ app.MapGet("/old-path", () => Results.Redirect("/new-path"));
 app.MapGet("/download", () => Results.File("myfile.text"));
 ```
 
+<a name="httpresultinterfaces7"></a>
+
+### HttpResult interfaces
+
+The following interfaces in the <xref:Microsoft.AspNetCore.Http> namespace provide a way to detect the `IResult` type at runtime, which is a common pattern in filter implementations:
+
+* <xref:Microsoft.AspNetCore.Http.IContentTypeHttpResult>
+* <xref:Microsoft.AspNetCore.Http.IFileHttpResult>
+* <xref:Microsoft.AspNetCore.Http.INestedHttpResult>
+* <xref:Microsoft.AspNetCore.Http.IStatusCodeHttpResult>
+* <xref:Microsoft.AspNetCore.Http.IValueHttpResult>
+* <xref:Microsoft.AspNetCore.Http.IValueHttpResult%601>
+
+Here's an example of a filter that uses one of these interfaces:
+
+:::code language="csharp" source="~/fundamentals/minimal-apis/7.0-samples/HttpResultInterfaces/Program.cs" id="snippet_filter":::
+
+For more information, see [Filters in Minimal API apps](xref:fundamentals/minimal-apis/min-api-filters) and [IResult implementation types](xref:fundamentals/minimal-apis/test-min-api#iresult-implementation-types).
+
 ## Customizing responses
 
 Applications can control responses by implementing a custom <xref:Microsoft.AspNetCore.Http.IResult> type. The following code is an example of an HTML result type:
@@ -196,7 +215,7 @@ public static void PopulateMetadata(MethodInfo method, EndpointBuilder builder)
 By default, Minimal API apps use [`Web defaults`](/dotnet/standard/serialization/system-text-json-configure-options#web-defaults-for-jsonserializeroptions) options during JSON serialization and deserialization.
 
 Options can be configured by invoking <xref:Microsoft.Extensions.DependencyInjection.HttpJsonServiceExtensions.ConfigureHttpJsonOptions%2A>, and the configured options are applied when the app calls extension methods defined in <xref:Microsoft.AspNetCore.Http.HttpResponseJsonExtensions> or <xref:Microsoft.AspNetCore.Http.HttpRequestJsonExtensions>.
- 
+
 The following example invokes `ConfigureHttpJsonOptions` to configure options that apply wherever the app serializes or deserializes JSON for HTTP requests and responses:
 
 [!code-csharp[](7.0-samples/WebMinJson/Program.cs?name=snippet_1)]
@@ -205,4 +224,6 @@ To make more localized changes to the serialization options, pass modified versi
 
 [!code-csharp[](7.0-samples/WebMinJson/Program.cs?name=snippet_2&highlight=12,13)]
 
+## Additional Resources
 
+* <xref:fundamentals/minimal-apis/security>
